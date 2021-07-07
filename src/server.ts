@@ -1,4 +1,6 @@
 import express from 'express';
+import "./database"
+import "reflect-metadata";
 
 const app = express();
 const port = '3333';
