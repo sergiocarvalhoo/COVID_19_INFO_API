@@ -1,5 +1,5 @@
-import {Request, Response} from "express";
-import {CreateAdministratorService, AdministratorsType} from '../services/CreateAdministratorService'
+import { Request, Response } from "express";
+import { CreateAdministratorService, AdministratorsType } from '../services/CreateAdministratorService'
 
 
 class CreateAdministratorController{

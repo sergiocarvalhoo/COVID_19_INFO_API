@@ -6,12 +6,12 @@ export function HandleExceptions(error: Error,
     response: Response, 
     next: NextFunction){
 
-        if(error instanceof Error){
+        if(error instanceof AppErrors){
             return response.status(400).json({error: error.message})
         }
 
         return response.status(500).json({
             status: "Error",
-            message: "Error Server Internal"
+            message: "Error Server Internal !"
         })
 }
