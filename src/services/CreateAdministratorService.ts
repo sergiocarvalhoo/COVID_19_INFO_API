@@ -1,6 +1,6 @@
 import {getCustomRepository} from "typeorm";	
 import {RepositoryAdministrators} from '../repositories/RepositoryAdministrators';
-
+import { AppErrors } from '../errors/AppErrors';
 
 export type AdministratorsType = {
     name:string;
@@ -19,12 +19,12 @@ class CreateAdministratorService {
         const administratorsRepository = getCustomRepository(RepositoryAdministrators);
 
         if(!cpf){
-            throw new Error('CPF Invalid !');
+            throw new AppErrors('CPF Invalid !', 400);
         }
 
         const administratorExists = await administratorsRepository.findByCPF(cpf);
         if(administratorExists){
-            throw new Error('CPF Already Exists !');
+            throw new AppErrors('CPF Already Exists !', 400);
         }
         const administrator = await administratorsRepository.createAdministrator(name, registration, cpf, birth_date, password, email, occupation);
     
