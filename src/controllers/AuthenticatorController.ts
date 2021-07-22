@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
-import { AuthenticationService, DataAuthentication } from '../services/AuthenticationService';
+import { AuthenticationService } from '../services/AuthenticationService';
+import { AuthenticationType } from '../dataio/AuthenticationType'
 
 
 class AuthenticatorController{
 
     async handle(request:Request, response:Response){
         
-        const {cpf, password} = request.body as DataAuthentication;
+        const {cpf, password} = request.body as AuthenticationType;
         
         const authenticationService = new AuthenticationService();
 

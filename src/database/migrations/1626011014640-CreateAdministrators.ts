@@ -1,4 +1,4 @@
-import {Column, MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class CreateAdministrators1625837261241 implements MigrationInterface {
 
@@ -8,35 +8,35 @@ export class CreateAdministrators1625837261241 implements MigrationInterface {
                 name:"Administrators",
                 columns:[
                     {
-                        name:"name",
-                        type:"varchar",
+                        name: "name",
+                        type: "varchar",
                     },
                     {
-                        name:"registration",
-                        type:"varchar",
-                        isUnique:true
+                        name: "registration",
+                        type: "varchar",
+                        isPrimary: true
                     },
                     {
-                        name:"cpf",
-                        type:"varchar",
-                        isPrimary:true
+                        name: "cpf",
+                        type: "varchar",
+                        isUnique: true
                     },
                     {
-                        name:"birth_date",
-                        type:"timestamp",
+                        name: "birth_date",
+                        type: "timestamp",
                     },
                     {
-                        name:"password",
-                        type:"varchar",
+                        name: "password",
+                        type: "varchar",
                     },
                     {
-                        name:"email",
-                        type:"varchar",
-                        isUnique:true
+                        name: "email",
+                        type: "varchar",
+                        isUnique: true
                     },
                     {
-                        name:"occupation",
-                        type:"varchar",
+                        name: "occupation",
+                        type: "varchar",
                     },
                 ]
             })

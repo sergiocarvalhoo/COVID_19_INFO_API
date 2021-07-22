@@ -7,6 +7,7 @@ import "./database"
 import { HandleExceptions } from './middleware/HandleExceptions'
 import { router } from './routes';
 
+require('dotenv').config()
 
 const app = express();
 const port = '3333';
