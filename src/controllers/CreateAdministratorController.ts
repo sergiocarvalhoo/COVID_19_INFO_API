@@ -8,9 +8,9 @@ class CreateAdministratorController{
     async handle(request:Request, response:Response){
         const {name, registration, cpf, birth_date, password, email, occupation} = request.body as AdministratorsType;
         
-        const createUserService = new CreateAdministratorService();
+        const createAdministratorService = new CreateAdministratorService();
 
-        const administrator = await createUserService.execute({
+        const administrator = await createAdministratorService.execute({
             name, registration, cpf, birth_date, password, email, occupation
         });
 

@@ -5,7 +5,7 @@ import "express-async-errors";
 import "./database"
 
 import { HandleExceptions } from './middleware/HandleExceptions'
-import { router } from './routes';
+import { routerAdministrator } from './routes/RoutesAdministrator';
 
 require('dotenv').config()
 
@@ -14,7 +14,7 @@ const port = '3333';
 
 app.use(express.json());
 
-app.use(router)
+app.use(routerAdministrator)
 
 app.use(HandleExceptions)
 
