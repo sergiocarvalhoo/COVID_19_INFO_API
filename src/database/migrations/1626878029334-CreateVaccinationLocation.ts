@@ -35,7 +35,21 @@ export class CreateVaccinationLocation1626878029334 implements MigrationInterfac
                         scale: 10,
                         precision: 2,
                     },
-                ]
+                    {
+                        name: "author_registration",
+                        type: "varchar",
+                    }
+                ],
+                foreignKeys: [
+                    {
+                      name: "FKAuthorRegistration",
+                      columnNames: ["author_registration"],
+                      referencedTableName: "Administrator",
+                      referencedColumnNames: ["registration"],
+                      onUpdate: "CASCADE",
+                      onDelete: "CASCADE",
+                    },
+                  ],
             })
             
             );
