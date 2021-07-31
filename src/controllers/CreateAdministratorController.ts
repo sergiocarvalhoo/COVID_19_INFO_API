@@ -14,7 +14,7 @@ class CreateAdministratorController{
             name, registration, cpf, birth_date, password, email, occupation
         });
 
-        return response.json(administrator);
+        return response.status(201).json(administrator);
     }
 
 }

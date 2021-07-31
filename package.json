@@ -24,6 +24,7 @@
     "jsonwebtoken": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.2",
-    "typeorm": "^0.2.34"
+    "typeorm": "^0.2.34",
+    "yup": "^0.32.9"
   }
 }

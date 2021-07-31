@@ -13,7 +13,7 @@ class DeleteAdministratorController{
 
         await deleteAdministratorService.execute(registration);
 
-        return response.status(201).json({message:"Administrator Deleted Successfully !"})
+        return response.status(200).json({message:"The Administrator has been deleted successfully!"})
 
     }
 

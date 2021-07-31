@@ -2,31 +2,22 @@ import { getCustomRepository } from "typeorm";
 import { RepositoryAdministrators } from '../repositories/RepositoryAdministrators';
 import { Administrator } from '../models/Administrator'
 import { AdministratorsType } from '../dto/AdministratorsType'
+import { createAdministratorValidation } from "../utils/CreateAdministratorValidation";
 import { AppErrors } from '../errors/AppErrors';
 import { hash } from 'bcryptjs';
 
 
 class CreateAdministratorService {
     
-    async execute({name, registration, cpf, birth_date, password, email, occupation}:AdministratorsType): Promise<Administrator>{
+    async execute(administratorParams:AdministratorsType): Promise<Administrator>{
 
         const administratorsRepository = getCustomRepository(RepositoryAdministrators);
 
-        if(!cpf){
-            throw new AppErrors('The administrators CPF number is invalid !', 400);
-        }
+        await createAdministratorValidation(administratorParams);
 
-        if(!email){
-            throw new AppErrors('The administrators E-mail is invalid !', 400);
-        }
-
-        if(!registration){
-            throw new AppErrors('The administrators Registration is invalid !', 400);
-        }
-
-        const administratorCPFExists = await administratorsRepository.findByCPF(cpf);
-        const administratorEmailExists = await administratorsRepository.findByEmail(email);
-        const administratorRegistrationExists = await administratorsRepository.findByRegistration(registration);
+        const administratorCPFExists = await administratorsRepository.findByCPF(administratorParams.cpf);
+        const administratorEmailExists = await administratorsRepository.findByEmail(administratorParams.email);
+        const administratorRegistrationExists = await administratorsRepository.findByRegistration(administratorParams.registration);
 
         if(administratorCPFExists){
             throw new AppErrors('There is already an administrator registered with this CPF number! !', 400);
@@ -40,16 +31,16 @@ class CreateAdministratorService {
             throw new AppErrors('There is already an administrator registered with this Registration number !', 400);
         }
 
-        const passwordCrypt = await hash(password, 8);
+        const passwordCrypt = await hash(administratorParams.password, 8);
 
         const administrator = await administratorsRepository.createAdministrator({
-            name,
-            registration, 
-            cpf, 
-            birth_date, 
+            name: administratorParams.name,
+            registration: administratorParams.registration, 
+            cpf: administratorParams.cpf, 
+            birth_date: administratorParams.birth_date, 
             password: passwordCrypt, 
-            email, 
-            occupation
+            email: administratorParams.email, 
+            occupation: administratorParams.occupation
         });
 
         return administrator;

@@ -14,7 +14,7 @@ class UpdateAdministratorController{
             name, registration, password, email, occupation
         });
 
-        return response.json(administrator);
+        return response.status(200).json(administrator);
     }
 
 }

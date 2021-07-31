@@ -15,7 +15,7 @@ class AuthenticatorController{
             cpf, password
         });
 
-        return response.status(201).json(token);
+        return response.status(200).json(token);
     }
 
 }

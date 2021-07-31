@@ -1,20 +1,19 @@
 import { getCustomRepository } from "typeorm";	
 import { RepositoryAdministrators } from '../repositories/RepositoryAdministrators';
 import { DeleteAdministratorsType } from '../dto/DeleteAdministratorsType'
+import { deleteAdministratorValidation } from "../utils/DeleteAdministratorValidation";
 import { AppErrors } from '../errors/AppErrors';
 
 
 class DeleteAdministratorService {
 
-    async execute({registration}:DeleteAdministratorsType){
+    async execute(administratorParams:DeleteAdministratorsType){
 
         const administratorsRepository = getCustomRepository(RepositoryAdministrators);
 
-        if(!registration){
-            throw new AppErrors('The administrators Registration is invalid !', 400);
-        }
+        await deleteAdministratorValidation(administratorParams);
 
-        const administrator = await administratorsRepository.findByRegistration(registration);
+        const administrator = await administratorsRepository.findByRegistration(administratorParams.registration);
 
         if(!administrator){
             throw new AppErrors('No have any administrator registered with this Registration number !', 400);
