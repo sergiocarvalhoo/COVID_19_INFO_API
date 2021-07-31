@@ -10,6 +10,7 @@ import {
   
   import { News } from "./News";
   
+  
 @Entity("Images")
 class Image {
 
@@ -32,3 +33,4 @@ class Image {
   }
   
   export {Image}
+  

@@ -9,6 +9,7 @@ import { News } from './News'
 import { Bulletin } from './Bulletin' 
 import { VaccinationLocation } from './VaccinationLocation'
 
+
 @Entity("Administrators")
 class Administrator{
     

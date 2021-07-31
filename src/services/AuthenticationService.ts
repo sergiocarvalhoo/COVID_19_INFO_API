@@ -1,9 +1,10 @@
 import { getCustomRepository } from "typeorm";	
 import { RepositoryAdministrators } from '../repositories/RepositoryAdministrators';
-import { AuthenticationType } from '../dataio/AuthenticationType'
+import { AuthenticationType } from '../dto/AuthenticationType'
 import { AppErrors } from '../errors/AppErrors';
 import { compare } from 'bcryptjs';
 import { sign } from "jsonwebtoken"
+
 
 class AuthenticationService {
     

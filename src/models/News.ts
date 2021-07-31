@@ -9,6 +9,7 @@ import { Entity,
 import { Administrator } from './Administrator'
 import { Image } from './Image'   
 
+
 @Entity("News")
 class News{
 

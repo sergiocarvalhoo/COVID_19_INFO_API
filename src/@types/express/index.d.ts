@@ -4,3 +4,4 @@ declare namespace Express {
       registration:string;
     }
   }
+  

@@ -1,12 +1,13 @@
 import { Request, Response } from "express";
 import { DeleteAdministratorService } from '../services/DeleteAdministratorService'
-import { DeleteAdministratorType } from '../dataio/DeleteAdministratorsType'
+import { DeleteAdministratorsType } from '../dto/DeleteAdministratorsType'
+
 
 class DeleteAdministratorController{
 
     async handle(request:Request, response:Response){
         
-        const registration = request.body as DeleteAdministratorType;
+        const registration = request.body as DeleteAdministratorsType;
         
         const deleteAdministratorService = new DeleteAdministratorService();
 

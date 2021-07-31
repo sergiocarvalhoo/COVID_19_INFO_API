@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { AuthenticationService } from '../services/AuthenticationService';
-import { AuthenticationType } from '../dataio/AuthenticationType'
+import { AuthenticationType } from '../dto/AuthenticationType'
 
 
 class AuthenticatorController{
@@ -14,8 +14,6 @@ class AuthenticatorController{
         const token = await authenticationService.execute({
             cpf, password
         });
-
-        //console.log(token)
 
         return response.status(201).json(token);
     }

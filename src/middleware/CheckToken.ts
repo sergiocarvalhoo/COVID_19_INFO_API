@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { verify } from "jsonwebtoken";
-import { PayloadType } from '../dataio/PayloadType'
+import { PayloadType } from '../dto/PayloadType'
+
 
 export function verifyTokenAuthentication(request: Request, response:Response, next:NextFunction){
 

@@ -1,11 +1,12 @@
 import { getCustomRepository } from "typeorm";	
 import { RepositoryAdministrators } from '../repositories/RepositoryAdministrators';
-import { DeleteAdministratorType } from '../dataio/DeleteAdministratorsType'
+import { DeleteAdministratorsType } from '../dto/DeleteAdministratorsType'
 import { AppErrors } from '../errors/AppErrors';
+
 
 class DeleteAdministratorService {
 
-    async execute({registration}:DeleteAdministratorType){
+    async execute({registration}:DeleteAdministratorsType){
 
         const administratorsRepository = getCustomRepository(RepositoryAdministrators);
 
@@ -20,7 +21,7 @@ class DeleteAdministratorService {
         }
 
         if(administrator){
-            await administratorsRepository.remove(administrator)
+            await administratorsRepository.delete(administrator.registration)
         }
         
     }

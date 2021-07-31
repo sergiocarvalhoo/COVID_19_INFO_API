@@ -7,6 +7,7 @@ import { Entity,
 
 import { Administrator } from './Administrator'    
 
+
 @Entity("Bulletin")
 class Bulletin{
 

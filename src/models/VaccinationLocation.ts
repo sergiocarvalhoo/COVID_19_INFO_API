@@ -6,6 +6,7 @@ import { Entity,
 
 import { Administrator } from './Administrator'    
 
+
 @Entity("VaccinationLocation")
 class VaccinationLocation{
 
