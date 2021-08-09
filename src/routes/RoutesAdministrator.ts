@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import { CreateAdministratorController } from '../controllers/CreateAdministratorController';
-import { UpdateAdministratorController } from '../controllers/UpdateAdministratorController';
-import { DeleteAdministratorController } from '../controllers/DeleteAdministratorController';
-import { AuthenticatorController } from '../controllers/AuthenticatorController';
+import { CreateAdministratorController } from '../controllers/Administrator/CreateAdministratorController';
+import { UpdateAdministratorController } from '../controllers/Administrator/UpdateAdministratorController';
+import { DeleteAdministratorController } from '../controllers/Administrator/DeleteAdministratorController';
+import { AuthenticatorController } from '../controllers/Administrator/AuthenticatorController';
 
 const routerAdministrator = Router();
 

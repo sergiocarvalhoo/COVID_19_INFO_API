@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from "typeorm";
 import { Administrator } from '../models/Administrator';
-import { AdministratorsType } from '../dto/AdministratorsType'
+import { AdministratorsType } from '../dto/Administrator/AdministratorsType'
 
 
 @EntityRepository(Administrator)

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { AuthenticationService } from '../services/AuthenticationService';
-import { AuthenticationType } from '../dto/AuthenticationType'
+import { AuthenticationService } from '../../services/Administrator/AuthenticationService';
+import { AuthenticationType } from '../../dto/Administrator/AuthenticationType'
 
 
 class AuthenticatorController{

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { DeleteAdministratorService } from '../services/DeleteAdministratorService'
-import { DeleteAdministratorsType } from '../dto/DeleteAdministratorsType'
+import { DeleteAdministratorService } from '../../services/Administrator/DeleteAdministratorService'
+import { DeleteAdministratorsType } from '../../dto/Administrator/DeleteAdministratorsType'
 
 
 class DeleteAdministratorController{

@@ -1,8 +1,8 @@
 import { getCustomRepository } from "typeorm";	
-import { RepositoryAdministrators } from '../repositories/RepositoryAdministrators';
-import { AuthenticationType } from '../dto/AuthenticationType'
-import { authenticateAdministratorValidation } from "../utils/AuthenticateAdministratorValidation";
-import { AppErrors } from '../errors/AppErrors';
+import { RepositoryAdministrators } from '../../repositories/RepositoryAdministrators';
+import { AuthenticationType } from '../../dto/Administrator/AuthenticationType'
+import { authenticateAdministratorValidation } from "../../utils/Administrator/AuthenticateAdministratorValidation";
+import { AppErrors } from '../../errors/AppErrors';
 import { compare } from 'bcryptjs';
 import { sign } from "jsonwebtoken"
 

@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import { AuthenticationType } from '../dto/AuthenticationType'
+import { AuthenticationType } from '../../dto/Administrator/AuthenticationType'
 
 
 export async function authenticateAdministratorValidation(administratorObject:AuthenticationType) {

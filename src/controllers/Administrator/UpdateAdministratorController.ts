@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { UpdateAdministratorService } from '../services/UpdateAdministratorService'
-import { UpdateAdministratorsType } from '../dto/UpdateAdministratorsType'
+import { UpdateAdministratorService } from '../../services/Administrator/UpdateAdministratorService'
+import { UpdateAdministratorsType } from '../../dto/Administrator/UpdateAdministratorsType'
 
 
 class UpdateAdministratorController{

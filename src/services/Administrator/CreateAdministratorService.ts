@@ -1,9 +1,9 @@
 import { getCustomRepository } from "typeorm";	
-import { RepositoryAdministrators } from '../repositories/RepositoryAdministrators';
-import { Administrator } from '../models/Administrator'
-import { AdministratorsType } from '../dto/AdministratorsType'
-import { createAdministratorValidation } from "../utils/CreateAdministratorValidation";
-import { AppErrors } from '../errors/AppErrors';
+import { RepositoryAdministrators } from '../../repositories/RepositoryAdministrators';
+import { Administrator } from '../../models/Administrator'
+import { AdministratorsType } from '../../dto/Administrator/AdministratorsType'
+import { createAdministratorValidation } from "../../utils/Administrator/CreateAdministratorValidation";
+import { AppErrors } from '../../errors/AppErrors';
 import { hash } from 'bcryptjs';
 
 

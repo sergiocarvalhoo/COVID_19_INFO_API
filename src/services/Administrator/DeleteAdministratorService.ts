@@ -1,8 +1,8 @@
 import { getCustomRepository } from "typeorm";	
-import { RepositoryAdministrators } from '../repositories/RepositoryAdministrators';
-import { DeleteAdministratorsType } from '../dto/DeleteAdministratorsType'
-import { deleteAdministratorValidation } from "../utils/DeleteAdministratorValidation";
-import { AppErrors } from '../errors/AppErrors';
+import { RepositoryAdministrators } from '../../repositories/RepositoryAdministrators';
+import { DeleteAdministratorsType } from '../../dto/Administrator/DeleteAdministratorsType'
+import { deleteAdministratorValidation } from "../../utils/Administrator/DeleteAdministratorValidation";
+import { AppErrors } from '../../errors/AppErrors';
 
 
 class DeleteAdministratorService {

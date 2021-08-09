@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { CreateAdministratorService } from '../services/CreateAdministratorService'
-import { AdministratorsType } from '../dto/AdministratorsType'
+import { CreateAdministratorService } from '../../services/Administrator/CreateAdministratorService'
+import { AdministratorsType } from '../../dto/Administrator/AdministratorsType'
 
 
 class CreateAdministratorController{

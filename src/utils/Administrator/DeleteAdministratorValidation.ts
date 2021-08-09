@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import { DeleteAdministratorsType } from '../dto/DeleteAdministratorsType'
+import { DeleteAdministratorsType } from '../../dto/Administrator/DeleteAdministratorsType'
 
 
 export async function deleteAdministratorValidation(administratorObject:DeleteAdministratorsType) {
