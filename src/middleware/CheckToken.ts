@@ -6,7 +6,7 @@ import { PayloadType } from '../dto/Administrator/PayloadType'
 export function verifyTokenAuthentication(request: Request, response:Response, next:NextFunction){
 
     const token = request.headers.authorization;
-    console.log(token);
+ //   console.log(token);
 
     if(!token){
         return response.status(401).json({message:"The Token is Missing !"})
@@ -17,7 +17,7 @@ export function verifyTokenAuthentication(request: Request, response:Response, n
     try {
         const {sub, email} = verify(tokenCripto[1], process.env.TOKEN_KEY) as PayloadType;
         //console.log(payload);
-        request.registration = sub;
+        request.administrator_registration = sub;
         request.administrator_email = email;
         return next();
     }
