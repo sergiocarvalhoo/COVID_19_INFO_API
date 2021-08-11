@@ -6,6 +6,7 @@ import "./database"
 
 import { HandleExceptions } from './middleware/HandleExceptions'
 import { routerAdministrator } from './routes/RoutesAdministrator';
+import { routerBulletin } from './routes/RoutesBulletin';
 
 require('dotenv').config()
 
@@ -15,6 +16,7 @@ const port = '3333';
 app.use(express.json());
 
 app.use(routerAdministrator)
+app.use(routerBulletin)
 
 app.use(HandleExceptions)
 
