@@ -1,4 +1,6 @@
 import { Router } from "express";
+import multer from "multer";
+import uploadConfig from '../config/upload';
 
 import { CreateNewsController } from "../controllers/News/CreateNewsController";
 
@@ -8,6 +10,8 @@ const routerNews = Router();
 
 const createNewsController = new CreateNewsController();
 
-routerNews.post('/createnews', verifyTokenAuthentication, createNewsController.handle);
+const upload = multer(uploadConfig);
+
+routerNews.post('/createnews', upload.array('images'), verifyTokenAuthentication, createNewsController.handle);
 
 export { routerNews }

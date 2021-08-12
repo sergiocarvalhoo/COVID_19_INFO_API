@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from "typeorm";
 import { News } from '../models/News';
-import { NewsTypee } from '../dto/News/NewsTypee'
+import { NewsTypeService } from '../dto/News/NewsTypeService'
 
 
 @EntityRepository(News)
@@ -10,7 +10,11 @@ class RepositoryNews extends Repository<News>{
         return await this.findOne({ title })
     }
 
-    async createNews(newsParam: NewsTypee): Promise<News> {
+    async findAssociationById(id: number): Promise<News | undefined> {
+        return await this.findOne(id, { relations: ["imagesPath"] });
+    }
+
+    async createNews(newsParam: NewsTypeService): Promise<News> {
 
         const news = this.create(newsParam);
         await this.save(news);

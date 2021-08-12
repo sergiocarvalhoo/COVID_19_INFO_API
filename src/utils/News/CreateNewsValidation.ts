@@ -1,12 +1,18 @@
 import * as Yup from 'yup'
-import { NewsType } from '../../dto/News/NewsType'
+import { NewsTypeService } from '../../dto/News/NewsTypeService'
 
-export async function createNewsValidation(newsObject: NewsType) {
+
+export async function createNewsValidation(newsObject: NewsTypeService) {
 
     const schema = Yup.object().shape({
         title: Yup.string().required(),
         description: Yup.string().required(),
         publication_date: Yup.date().required(),
+        images: Yup.array(
+            Yup.object().shape({
+                path: Yup.string().required(),
+            })
+        ),
     });
 
     try {

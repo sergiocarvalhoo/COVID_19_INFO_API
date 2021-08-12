@@ -1,14 +1,14 @@
 import { getCustomRepository } from "typeorm";
 import { RepositoryNews } from '../../repositories/RepositoryNews';
 import { News } from '../../models/News'
-import { NewsTypee } from '../../dto/News/NewsTypee'
+import { NewsTypeService } from '../../dto/News/NewsTypeService'
 import { createNewsValidation } from "../../utils/News/CreateNewsValidation";
 import { AppErrors } from '../../errors/AppErrors';
 
 
 class CreateNewsService {
 
-    async execute(newsParams: NewsTypee): Promise<News> {
+    async execute(newsParams: NewsTypeService): Promise<News> {
 
         const newsRepository = getCustomRepository(RepositoryNews);
 
@@ -20,12 +20,7 @@ class CreateNewsService {
             throw new AppErrors('Ja existe uma noticia com este titulo!', 400);
         }
 
-        const news = await newsRepository.createNews({
-            title: newsParams.title,
-            description: newsParams.description,
-            publication_date: newsParams.publication_date,
-            author: newsParams.author,
-        });
+        const news = await newsRepository.createNews(newsParams);
 
         return news
     }
