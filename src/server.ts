@@ -8,6 +8,7 @@ import { HandleExceptions } from './middleware/HandleExceptions'
 import { routerAdministrator } from './routes/RoutesAdministrator';
 import { routerBulletin } from './routes/RoutesBulletin';
 import { routerNews } from "./routes/RoutesNews";
+import { routerVaccinationLocation } from "./routes/RoutesVaccinationLocation";
 
 require('dotenv').config()
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(routerAdministrator)
 app.use(routerBulletin)
 app.use(routerNews)
+app.use(routerVaccinationLocation)
 
 app.use(HandleExceptions)
 
