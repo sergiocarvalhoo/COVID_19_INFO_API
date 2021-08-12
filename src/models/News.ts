@@ -1,21 +1,23 @@
-import { Entity, 
-    PrimaryGeneratedColumn, 
-    CreateDateColumn, 
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    CreateDateColumn,
     Column,
     ManyToOne,
-    OneToMany } 
+    OneToMany
+}
     from "typeorm";
 
 import { Administrator } from './Administrator'
-import { Image } from './Image'   
+import { Image } from './Image'
 
 
 @Entity("News")
-class News{
+class News {
 
     @PrimaryGeneratedColumn("increment")
     id: number;
-      
+
     @ManyToOne(() => Administrator, administrator => administrator.registration)
     author: Administrator;
 
@@ -25,14 +27,14 @@ class News{
     @Column()
     title: string;
 
-    @OneToMany((type) => Image, (image) => image.news,{
+    @OneToMany((type) => Image, (image) => image.news, {
         cascade: ["insert", "update"],
-      })
-      imagesPath: Image[];
+    })
+    imagesPath: Image[];
 
     @Column()
     description: string;
 
 }
 
-export {News}
+export { News }
