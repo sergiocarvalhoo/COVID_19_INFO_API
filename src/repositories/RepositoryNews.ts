@@ -10,8 +10,12 @@ class RepositoryNews extends Repository<News>{
         return await this.findOne({ title })
     }
 
-    async findAssociationById(id: number): Promise<News | undefined> {
-        return await this.findOne(id, { relations: ["imagesPath"] });
+    // async findNewsById(id: number): Promise<News | undefined> {
+    //     return await this.findOne(id, { relations: ["imagesPath"] });
+    // }
+
+    async findById(id: number): Promise<News | undefined> {
+        return await this.findOne({ id })
     }
 
     async createNews(newsParam: NewsTypeService): Promise<News> {
