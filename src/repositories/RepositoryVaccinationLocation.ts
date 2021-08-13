@@ -5,19 +5,23 @@ import { VaccinationLocationTypeService } from '../dto/VaccinationLocation/Vacci
 
 @EntityRepository(VaccinationLocation)
 class RepositoryVaccinationLocation extends Repository<VaccinationLocation>{
-    
-      async findByName(name: string): Promise<VaccinationLocation | undefined> {
+
+    async findByName(name: string): Promise<VaccinationLocation | undefined> {
         return await this.findOne({ name })
     }
 
-    async createVaccinationLocation(vaccinationLocationParam: VaccinationLocationTypeService): Promise<VaccinationLocation>{
+    async findById(id: number): Promise<VaccinationLocation | undefined> {
+        return await this.findOne({ id })
+    }
+
+    async createVaccinationLocation(vaccinationLocationParam: VaccinationLocationTypeService): Promise<VaccinationLocation> {
 
         const vaccinationLocation = this.create(vaccinationLocationParam);
         await this.save(vaccinationLocation);
-        
+
         return vaccinationLocation;
     }
 
 }
 
-export{RepositoryVaccinationLocation}
+export { RepositoryVaccinationLocation }

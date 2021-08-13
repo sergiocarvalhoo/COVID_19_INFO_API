@@ -3,7 +3,7 @@
 
 
 
-import { getCustomRepository } from "typeorm";	
+import { getCustomRepository } from "typeorm";
 import { RepositoryVaccinationLocation } from '../../repositories/RepositoryVaccinationLocation';
 import { VaccinationLocation } from '../../models/VaccinationLocation'
 import { VaccinationLocationTypeService } from '../../dto/VaccinationLocation/VaccinationLocationTypeService'
@@ -12,8 +12,8 @@ import { AppErrors } from '../../errors/AppErrors';
 
 
 class CreateVaccinationLocationService {
-    
-    async execute(vaccinationLocationParams:VaccinationLocationTypeService): Promise<VaccinationLocation>{
+
+    async execute(vaccinationLocationParams: VaccinationLocationTypeService): Promise<VaccinationLocation> {
 
         const vaccinationLocationRepository = getCustomRepository(RepositoryVaccinationLocation);
 
@@ -25,11 +25,11 @@ class CreateVaccinationLocationService {
             description: vaccinationLocationParams.description,
             latitude: vaccinationLocationParams.latitude,
             longitude: vaccinationLocationParams.longitude,
-            author:vaccinationLocationParams.author
+            author: vaccinationLocationParams.author
         });
 
         return location;
     }
 }
 
-export {CreateVaccinationLocationService}
+export { CreateVaccinationLocationService }
