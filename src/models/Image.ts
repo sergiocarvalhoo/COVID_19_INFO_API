@@ -27,7 +27,7 @@ class Image {
   updated_at: Date;
 
   @ManyToOne(() => News, (news) => news.imagesPath)
-  @JoinColumn({ name: "id" })
+  @JoinColumn({ name: "news_id" })
   news: News;
 
 }
