@@ -10,6 +10,10 @@ class RepositoryBulletin extends Repository<Bulletin>{
         return await this.findOne({ publication_date })
     }
 
+    async findById(id: number): Promise<Bulletin | undefined> {
+        return await this.findOne({ id })
+    }
+
     async createBulletin(bulletinParam: BulletinTypeService): Promise<Bulletin>{
 
         const bulletin = this.create(bulletinParam);

@@ -1,8 +1,7 @@
 import { Entity, 
-    PrimaryColumn,
-    CreateDateColumn, 
     Column,
-    ManyToOne } 
+    ManyToOne, 
+    PrimaryGeneratedColumn} 
     from "typeorm";
 
 import { Administrator } from './Administrator'    
@@ -10,6 +9,9 @@ import { Administrator } from './Administrator'
 
 @Entity("Bulletin")
 class Bulletin{
+
+    @PrimaryGeneratedColumn("increment")
+    id: number;
 
     @Column()
     confirmed: number;
@@ -29,7 +31,7 @@ class Bulletin{
     @Column()
     deaths: number;
 
-    @PrimaryColumn()
+    @Column()
     publication_date: Date;
       
     @ManyToOne(() => Administrator, administrator => administrator.registration)
