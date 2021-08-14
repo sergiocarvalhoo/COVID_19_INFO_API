@@ -1,10 +1,15 @@
 {
     "name": "default",
-    "type":"sqlite",
-    "database":"src/database/Db.sqlite",
-    "entities":["src/models/*.ts"],
-    "migrations":["src/database/migrations/*.ts"],
-    "cli":{
-        "migrationsDir":"src/database/migrations"
+    "type": "sqlite",
+    "database": "src/database/Db.sqlite",
+    "entities": [
+        "src/models/*.ts"
+    ],
+    "migrations": [
+        "src/database/migrations/*.ts"
+    ],
+    "synchronize": false,
+    "cli": {
+        "migrationsDir": "src/database/migrations"
     }
 }

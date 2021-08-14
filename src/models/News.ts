@@ -5,8 +5,7 @@ import {
     Column,
     ManyToOne,
     OneToMany
-}
-    from "typeorm";
+} from "typeorm";
 
 import { Administrator } from './Administrator'
 import { Image } from './Image'

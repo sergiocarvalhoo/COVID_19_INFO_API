@@ -6,7 +6,6 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
-  DeleteDateColumn
 } from "typeorm";
 
 import { News } from "./News";
