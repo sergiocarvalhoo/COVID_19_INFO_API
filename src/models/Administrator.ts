@@ -34,13 +34,19 @@ class Administrator{
     @Column()
     occupation: string;
 
-    @OneToMany(() => News, news => news.author)
+    @OneToMany(() => News, news => news.author, {
+        cascade:true
+    })
     news: News[];
 
-    @OneToMany(() => Bulletin, bulletin => bulletin.author)
+    @OneToMany(() => Bulletin, bulletin => bulletin.author, {
+        cascade:true
+    })
     bulletin: Bulletin[];
 
-    @OneToMany(() => VaccinationLocation, vaccinationlocation => vaccinationlocation.author)
+    @OneToMany(() => VaccinationLocation, vaccinationlocation => vaccinationlocation.author, {
+        cascade:true
+    })
     vaccinationlocation: VaccinationLocation[];
 }
 

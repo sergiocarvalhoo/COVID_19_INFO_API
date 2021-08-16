@@ -25,7 +25,9 @@ class VaccinationLocation{
     @Column()
     longitude: number;
       
-    @ManyToOne(() => Administrator, administrator => administrator.registration)
+    @ManyToOne(() => Administrator, administrator => administrator.registration, {
+        onDelete:'CASCADE',onUpdate:'CASCADE'
+    })
     author: Administrator;
 
 }

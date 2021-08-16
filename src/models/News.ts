@@ -17,7 +17,9 @@ class News {
     @PrimaryGeneratedColumn("increment")
     id: number;
 
-    @ManyToOne(() => Administrator, administrator => administrator.registration)
+    @ManyToOne(() => Administrator, administrator => administrator.registration, {
+        onDelete:'CASCADE',onUpdate:'CASCADE'
+    })
     author: Administrator;
 
     @CreateDateColumn()
@@ -27,7 +29,7 @@ class News {
     title: string;
 
     @OneToMany((type) => Image, (image) => image.news, {
-        cascade: ["insert", "update"],
+        cascade:true
     })
     imagesPath: Image[];
 
