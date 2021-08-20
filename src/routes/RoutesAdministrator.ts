@@ -16,13 +16,9 @@ const deleteAdministratorController = new DeleteAdministratorController();
 const authenticatorController = new AuthenticatorController();
 
 routerAdministrator.post('/createadministrator', createAdministratorController.handle);
-
 routerAdministrator.get("/administrators", verifyTokenAuthentication, readAdministratorsController.handle);
-
 routerAdministrator.put('/updateadministrator', verifyTokenAuthentication, updateAdministratorController.handle);
-
 routerAdministrator.delete('/deleteadministrator', verifyTokenAuthentication, deleteAdministratorController.handle);
-
 routerAdministrator.post('/login', authenticatorController.handle);
 
 export { routerAdministrator }

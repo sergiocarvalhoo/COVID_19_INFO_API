@@ -19,7 +19,7 @@ const upload = multer(uploadConfig);
 
 routerNews.post('/createnews', upload.array('images'), verifyTokenAuthentication, createNewsController.handle);
 routerNews.put('/updatenews', upload.array('images'), verifyTokenAuthentication, updateNewsController.handle);
-routerNews.get('/readnews', upload.array('images'), verifyTokenAuthentication, readNewsController.handle);
+routerNews.get('/readnews', upload.array('images'), readNewsController.handle);
 routerNews.delete('/deletenews', upload.array('images'), verifyTokenAuthentication, deleteNewsController.handle);
 
 export { routerNews }

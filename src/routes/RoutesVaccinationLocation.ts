@@ -16,5 +16,5 @@ const readVaccinationLocationController = new ReadVaccinationLocationController(
 routerVaccinationLocation.post('/createvaccinationlocation', verifyTokenAuthentication, createVaccinationLocationController.handle);
 routerVaccinationLocation.put('/updatevaccinationlocation', verifyTokenAuthentication, updateVaccinationLocationController.handle);
 routerVaccinationLocation.delete('/deletevaccinationlocation', verifyTokenAuthentication, deleteVaccinationLocationController.handle);
-routerVaccinationLocation.get('/vaccinationLocation',verifyTokenAuthentication, readVaccinationLocationController.handle)
+routerVaccinationLocation.get('/vaccinationLocations', readVaccinationLocationController.handle)
 export { routerVaccinationLocation }
