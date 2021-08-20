@@ -3,6 +3,7 @@ import express from 'express';
 import "express-async-errors";
 import path from 'path';
 import "./database"
+import cors from 'cors';
 
 import { HandleExceptions } from './middleware/HandleExceptions'
 import { routerAdministrator } from './routes/RoutesAdministrator';
@@ -15,6 +16,7 @@ require('dotenv').config()
 const app = express();
 const port = '3333';
 
+app.use(cors());
 app.use(express.json());
 
 app.use(routerAdministrator)
