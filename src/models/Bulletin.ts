@@ -31,7 +31,7 @@ class Bulletin{
     @Column()
     deaths: number;
 
-    @Column()
+    @Column({ unique: true })
     publication_date: Date;
       
     @ManyToOne(() => Administrator, administrator => administrator.registration, {

@@ -1,12 +1,12 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class CreateTables1629157185419 implements MigrationInterface {
-    name = 'CreateTables1629157185419'
+export class CreateTables1629461928039 implements MigrationInterface {
+    name = 'CreateTables1629461928039'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "Images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "path" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "news_id" integer)`);
         await queryRunner.query(`CREATE TABLE "News" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "publication_date" datetime NOT NULL DEFAULT (datetime('now')), "title" varchar NOT NULL, "description" varchar NOT NULL, "authorRegistration" varchar)`);
-        await queryRunner.query(`CREATE TABLE "Bulletin" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "confirmed" integer NOT NULL, "recovered" integer NOT NULL, "discarded" integer NOT NULL, "under_review" integer NOT NULL, "admitted" integer NOT NULL, "deaths" integer NOT NULL, "publication_date" datetime NOT NULL, "authorRegistration" varchar)`);
+        await queryRunner.query(`CREATE TABLE "Bulletin" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "confirmed" integer NOT NULL, "recovered" integer NOT NULL, "discarded" integer NOT NULL, "under_review" integer NOT NULL, "admitted" integer NOT NULL, "deaths" integer NOT NULL, "publication_date" datetime NOT NULL, "authorRegistration" varchar, CONSTRAINT "UQ_6bebef0e179c2b60b94aafadc98" UNIQUE ("publication_date"))`);
         await queryRunner.query(`CREATE TABLE "VaccinationLocation" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "description" varchar NOT NULL, "latitude" integer NOT NULL, "longitude" integer NOT NULL, "authorRegistration" varchar)`);
         await queryRunner.query(`CREATE TABLE "Administrators" ("name" varchar NOT NULL, "registration" varchar PRIMARY KEY NOT NULL, "cpf" varchar NOT NULL, "birth_date" datetime NOT NULL DEFAULT (datetime('now')), "password" varchar NOT NULL, "email" varchar NOT NULL, "occupation" varchar NOT NULL, CONSTRAINT "UQ_914f0f490951b9a3fc5ab1d6800" UNIQUE ("cpf"), CONSTRAINT "UQ_2561d0122b5239935a327e3a535" UNIQUE ("email"))`);
         await queryRunner.query(`CREATE TABLE "temporary_Images" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "path" varchar NOT NULL, "created_at" datetime NOT NULL DEFAULT (datetime('now')), "updated_at" datetime NOT NULL DEFAULT (datetime('now')), "news_id" integer, CONSTRAINT "FK_0e4648a7d1888a26a587238a7d1" FOREIGN KEY ("news_id") REFERENCES "News" ("id") ON DELETE CASCADE ON UPDATE CASCADE)`);
@@ -17,7 +17,7 @@ export class CreateTables1629157185419 implements MigrationInterface {
         await queryRunner.query(`INSERT INTO "temporary_News"("id", "publication_date", "title", "description", "authorRegistration") SELECT "id", "publication_date", "title", "description", "authorRegistration" FROM "News"`);
         await queryRunner.query(`DROP TABLE "News"`);
         await queryRunner.query(`ALTER TABLE "temporary_News" RENAME TO "News"`);
-        await queryRunner.query(`CREATE TABLE "temporary_Bulletin" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "confirmed" integer NOT NULL, "recovered" integer NOT NULL, "discarded" integer NOT NULL, "under_review" integer NOT NULL, "admitted" integer NOT NULL, "deaths" integer NOT NULL, "publication_date" datetime NOT NULL, "authorRegistration" varchar, CONSTRAINT "FK_3fe8aa622cc004fe882acc57513" FOREIGN KEY ("authorRegistration") REFERENCES "Administrators" ("registration") ON DELETE CASCADE ON UPDATE CASCADE)`);
+        await queryRunner.query(`CREATE TABLE "temporary_Bulletin" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "confirmed" integer NOT NULL, "recovered" integer NOT NULL, "discarded" integer NOT NULL, "under_review" integer NOT NULL, "admitted" integer NOT NULL, "deaths" integer NOT NULL, "publication_date" datetime NOT NULL, "authorRegistration" varchar, CONSTRAINT "UQ_6bebef0e179c2b60b94aafadc98" UNIQUE ("publication_date"), CONSTRAINT "FK_3fe8aa622cc004fe882acc57513" FOREIGN KEY ("authorRegistration") REFERENCES "Administrators" ("registration") ON DELETE CASCADE ON UPDATE CASCADE)`);
         await queryRunner.query(`INSERT INTO "temporary_Bulletin"("id", "confirmed", "recovered", "discarded", "under_review", "admitted", "deaths", "publication_date", "authorRegistration") SELECT "id", "confirmed", "recovered", "discarded", "under_review", "admitted", "deaths", "publication_date", "authorRegistration" FROM "Bulletin"`);
         await queryRunner.query(`DROP TABLE "Bulletin"`);
         await queryRunner.query(`ALTER TABLE "temporary_Bulletin" RENAME TO "Bulletin"`);
@@ -33,7 +33,7 @@ export class CreateTables1629157185419 implements MigrationInterface {
         await queryRunner.query(`INSERT INTO "VaccinationLocation"("id", "name", "description", "latitude", "longitude", "authorRegistration") SELECT "id", "name", "description", "latitude", "longitude", "authorRegistration" FROM "temporary_VaccinationLocation"`);
         await queryRunner.query(`DROP TABLE "temporary_VaccinationLocation"`);
         await queryRunner.query(`ALTER TABLE "Bulletin" RENAME TO "temporary_Bulletin"`);
-        await queryRunner.query(`CREATE TABLE "Bulletin" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "confirmed" integer NOT NULL, "recovered" integer NOT NULL, "discarded" integer NOT NULL, "under_review" integer NOT NULL, "admitted" integer NOT NULL, "deaths" integer NOT NULL, "publication_date" datetime NOT NULL, "authorRegistration" varchar)`);
+        await queryRunner.query(`CREATE TABLE "Bulletin" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "confirmed" integer NOT NULL, "recovered" integer NOT NULL, "discarded" integer NOT NULL, "under_review" integer NOT NULL, "admitted" integer NOT NULL, "deaths" integer NOT NULL, "publication_date" datetime NOT NULL, "authorRegistration" varchar, CONSTRAINT "UQ_6bebef0e179c2b60b94aafadc98" UNIQUE ("publication_date"))`);
         await queryRunner.query(`INSERT INTO "Bulletin"("id", "confirmed", "recovered", "discarded", "under_review", "admitted", "deaths", "publication_date", "authorRegistration") SELECT "id", "confirmed", "recovered", "discarded", "under_review", "admitted", "deaths", "publication_date", "authorRegistration" FROM "temporary_Bulletin"`);
         await queryRunner.query(`DROP TABLE "temporary_Bulletin"`);
         await queryRunner.query(`ALTER TABLE "News" RENAME TO "temporary_News"`);
