@@ -14,7 +14,8 @@ import { routerVaccinationLocation } from "./routes/RoutesVaccinationLocation";
 require('dotenv').config()
 
 const app = express();
-const port = '3333';
+const port = process.env.PORT;
+const ip = process.env.IP; 
 
 app.use(cors());
 app.use(express.json());
@@ -29,5 +30,5 @@ app.use(HandleExceptions)
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 app.listen(port, () => {
-    console.log('Server is listening on: http://localhost:' + port)
+    console.log('Server is listening on: http://' + ip + ':' + port)
 });
