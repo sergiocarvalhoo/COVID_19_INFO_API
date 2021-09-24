@@ -4,12 +4,18 @@ import { AuthenticationType } from '../../dto/Administrator/AuthenticationType'
 import { authenticateAdministratorValidation } from "../../utils/Administrator/AuthenticateAdministratorValidation";
 import { AppErrors } from '../../errors/AppErrors';
 import { compare } from 'bcryptjs';
-import { sign } from "jsonwebtoken"
+import { sign } from "jsonwebtoken";
+import {Administrator} from "../../models/Administrator"
 
+
+interface Data{
+    administrator: Administrator;
+    token: string;
+}
 
 class AuthenticationService {
     
-    async execute(administratorParams:AuthenticationType): Promise<string>{
+    async execute(administratorParams:AuthenticationType): Promise<Data>{
 
         const administratorsRepository = getCustomRepository(RepositoryAdministrators);
 
@@ -40,7 +46,9 @@ class AuthenticationService {
             }
         );
 
-        return token;
+        const data = {administrator, token}
+
+        return data;
 
     }
 }

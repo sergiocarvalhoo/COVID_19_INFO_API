@@ -11,11 +11,12 @@ class AuthenticatorController{
         
         const authenticationService = new AuthenticationService();
 
-        const token = await authenticationService.execute({
+        const {administrator, token}  = await authenticationService.execute({
             cpf, password
         });
 
-        return response.status(200).json(token);
+
+        return response.status(200).json({administrator, token});
     }
 
 }
