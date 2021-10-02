@@ -14,8 +14,8 @@ const deleteBulletinController = new DeleteBulletinController();
 const readBulletinController = new ReadBulletinController();
 
 routerBulletin.post('/createbulletin', verifyTokenAuthentication, createBulletinController.handle);
-routerBulletin.put('/updatebulletin', updateBulletinController.handle);
+routerBulletin.put('/updatebulletin', verifyTokenAuthentication, updateBulletinController.handle);
 routerBulletin.delete('/deletebulletin', verifyTokenAuthentication, deleteBulletinController.handle);
-routerBulletin.get('/bulletins', verifyTokenAuthentication, readBulletinController.handle);
+routerBulletin.get('/bulletins', readBulletinController.handle);
 
 export { routerBulletin }
