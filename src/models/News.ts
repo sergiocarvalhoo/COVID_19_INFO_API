@@ -4,7 +4,8 @@ import {
     CreateDateColumn,
     Column,
     ManyToOne,
-    OneToMany
+    OneToMany,
+    JoinColumn
 } from "typeorm";
 
 import { Administrator } from './Administrator'
@@ -31,6 +32,7 @@ class News {
     @OneToMany((type) => Image, (image) => image.news, {
         cascade:true
     })
+    @JoinColumn({ name: "news_id" })
     imagesPath: Image[];
 
     @Column()

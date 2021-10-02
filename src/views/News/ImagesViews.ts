@@ -7,11 +7,13 @@ interface ImageResponse {
 export default {
 
   handleImage(image: Image): ImageResponse {
+    const {URL} = process.env;
     return {
       id: image.id,
-      url: `http://localhost:3333/uploads/${image.path}`
+      url: URL + image.path
     };
   },
+
   handleManyImages(images: Image[]): ImageResponse[] {
     return images.map(image => this.handleImage(image));
   }
